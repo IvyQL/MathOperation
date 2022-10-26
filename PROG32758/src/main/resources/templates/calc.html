@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Calculation</title>
+</head>
+<body>
+	<h2>Perform a Calculation</h2>
+	<!-- form for input numbers, and submit to database -->
+	<form method="post" th:action="@{/calc}" th:object="${calculation}"><!-- match databaseAccess + controller -->
+		<table>
+			<tr>
+				<td><label for="cal">Action:</label></td>
+				<td>
+					<!--  <input type="text" th:field="*{action}">-->
+				 <select id="cal" th:field="*{action}">
+						<option th:value="add" th:text="add">add</option>
+						<option th:value="subtract" th:text="subtract">subtract</option>
+						<option th:value="multiply" th:text="multiply">multiply</option>
+						<option th:value="divide" th:text="divide">divide</option>
+				</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Val 1:</td>
+				<td><input type="text" th:field="*{val1}"></td>
+			</tr>
+			<tr>
+				<td>Val 2:</td>
+				<td><input type="text" th:field="*{val2}"></td>
+			</tr>
+			<tr>
+				<td>Your Answer:</td>
+				<td><input type="text" th:field="*{res}"></td>
+			</tr>
+		</table>
+		<br>
+		<!-- add to the database -->
+		<input type="submit" value="Answer">
+
+	</form>
+
+	<a th:href="@{/}">Back to index.html page</a>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Calculation List</title>
+</head>
+<body>
+	<h2>All Performed Calculations</h2>
+	
+	<table border=1>
+	<tr><!-- 1st row, header -->
+		<th>Actions</th>
+		<th>Action</th>
+		<th>Val 1</th>
+		<th>Val 2</th>
+		<th>Result</th>
+		<th>Correct</th>
+	</tr>
+	
+	<tr th:each="c: ${calculations}" th:object=${c}> <!-- match databaseAccess & controller , repeat-->
+	<td>
+		<a th:href="@{/delete/{id}(id=*{id})}">Delete</a> <!-- link -->
+		
+	</td>		<!-- 2nd row -->
+		<td><span th:text="*{action}"></span></td>
+		<td><span th:text="*{val1}"></span></td>
+		<td><span th:text="*{val2}"></span></td>
+		<td><span th:text="*{res}"></span></td>
+		<td>
+			<input type="checkbox" th:checked="*{correct}">
+			<span th:text="*{correct}"></span><!-- work on it -->
+		</td>	
+	</tr>
+	</table>
+	
+	
+	<br><br>
+	<a th:href="@{/}">Back to index.html page</a><br>
+	<a th:href="@{/res}">View Result</a>
+</body>
+</html>

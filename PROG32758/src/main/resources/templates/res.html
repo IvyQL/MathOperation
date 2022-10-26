@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Results</title>
+</head>
+<body>
+	<h2>Your Results</h2>
+	<h3><span 
+	th:text="|Correct %: ${cor}|"
+	th:style="${cor>70} ? 'color:green' : 'color:red'"></span>
+	<!-- connect to controller --> 
+	</h3>
+	<h3 th:text="|Incorrect %: ${incor}|"></h3><br>
+	
+	<a th:href="@{/}">Back to index.html page</a>
+</body>
+</html>
